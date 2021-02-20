@@ -1,0 +1,6 @@
+<?php
+/** @var Goaffpro\AffiliateMarketing\Block\Order\Success $block */
+$order = $block->getOrder();
+?>
+<!-- This is to ensure inline javascript CSP does not block this code --->
+<div id="goaffpro_order_elem" data-increment-id="<?= $order->getIncrementId() ?>" data-order-id="<?= $order->getEntityId() ?>"></div>

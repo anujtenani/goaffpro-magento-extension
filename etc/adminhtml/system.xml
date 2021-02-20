@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+	<system>
+		<tab id="goaffpro" translate="label" sortOrder="999">
+			<label>goaffpro</label>
+		</tab>
+		<section id="goaffpro" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+			<label>Affiliate Marketing</label>
+			<tab>goaffpro</tab>
+			<resource>Goaffpro_AffiliateMarketing::config_goaffpro_affiliatemarketing</resource>
+			<group id="general" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+				<label>General Settings</label>
+				<field id="enabled" type="select" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+					<label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+				<field id="public_key" type="text" sortOrder="10" showInWebsite="1" showInStore="1" showInDefault="1" translate="label">
+					<label>Public Key</label>
+                    <frontend_model>Goaffpro\AffiliateMarketing\Block\System\Config\Form\Field\Disable</frontend_model>
+                    <comment>This is your store unique public key</comment>
+				</field>
+			</group>
+		</section>
+	</system>
+</config>

@@ -1,0 +1,15 @@
+{
+    "name": "goaffpro/affiliatemarketing",
+    "description": "Goaffpro Affiliate Marketing module",
+    "type": "magento2-module",
+    "minimum-stability": "stable",
+    "require": {},
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Goaffpro\\AffiliateMarketing\\": ""
+        }
+    }
+}
