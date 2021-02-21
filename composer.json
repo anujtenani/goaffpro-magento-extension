@@ -1,9 +1,18 @@
 {
     "name": "goaffpro/affiliatemarketing",
-    "description": "Goaffpro Affiliate Marketing module",
+    "description": "Goaffpro Affiliate Marketing",
     "type": "magento2-module",
     "minimum-stability": "stable",
+    "homepage": "https://goaffpro.com",
     "require": {},
+    "license": "GPL-3.0-only",
+    "keywords":[
+        "goaffpro","affiliate marketing","influencer marketing","multi level marketing"
+    ],
+    "support":{
+        "email":"admin@goaffpro.com",
+        "docs":"https://docs.goaffpro.com"
+    },
     "autoload": {
         "files": [
             "registration.php"
