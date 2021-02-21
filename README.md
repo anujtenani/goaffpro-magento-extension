@@ -11,7 +11,7 @@ bin/magento-cli cache:flush
 ```
 
 ## via Module zip upload
-1. Download the module zip file from https://goaffpro.com/goaffpro-affiliate_marketing-1.0.0.zip
+1. Download the module zip file from https://goaffpro.com/goaffpro-affiliate_marketing-latest.zip
 2. Unzip the file in your magento install directory -> app -> code folder
 eg. `/htdocs/app/code`
 3. Run the following command in your magento home directory
