@@ -2,7 +2,7 @@
     "name": "goaffpro/affiliatemarketing",
     "description": "Goaffpro Affiliate Marketing",
     "type": "magento2-module",
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "homepage": "https://goaffpro.com",
     "require": {},
     "license": "GPL-3.0-only",
