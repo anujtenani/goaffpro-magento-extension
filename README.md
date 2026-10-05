@@ -1,13 +1,20 @@
 # Goaffpro
 Goaffpro is an affiliate marketing platform which enables your ecommerce store to increase sales by running a completely custom affiliate marketing program.
 
+## Requirements
+- Magento Open Source / Adobe Commerce 2.4.9 (compatible with the 2.4.7+ release line)
+- PHP 8.3, 8.4 or 8.5
+
+## Documentation
+- [Merchant guide](./MERCHANT_GUIDE.md) — what the extension does, how it tracks referrals and orders, what data is sent to Goaffpro, and how to configure it.
+
 # Installation instructions
 ## via Composer
 In your magento home directory in the server run the following commands
 ```
-composer require goaffpro/affiliatemarketing:1.0.1
-bin/magento-cli setup:upgrade
-bin/magento-cli cache:flush
+composer require goaffpro/affiliatemarketing
+bin/magento setup:upgrade
+bin/magento cache:flush
 ```
 
 ## via Module zip upload
@@ -16,7 +23,7 @@ bin/magento-cli cache:flush
 eg. `/htdocs/app/code`
 3. Run the following command in your magento home directory
 ```
-bin/magento-cli setup:upgrade
-bin/magento-cli cache:flush
+bin/magento setup:upgrade
+bin/magento cache:flush
 ```
 

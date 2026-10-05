@@ -5,6 +5,7 @@ namespace Goaffpro\AffiliateMarketing\Observer;
 use Goaffpro\AffiliateMarketing\Helper\GoaffproApi;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
+use Magento\Sales\Model\Order;
 
 class SalesOrderPlaceSave implements ObserverInterface
 {
@@ -25,8 +26,8 @@ class SalesOrderPlaceSave implements ObserverInterface
     public function execute(Observer $observer)
     {
         $order = $observer->getEvent()->getOrder();
-        if ($order instanceof \Magento\Framework\Model\AbstractModel) {
-            $this->api->orderCreated($order->getId());
+        if ($order instanceof Order) {
+            $this->api->orderCreated($order);
         }
         return $this;
     }

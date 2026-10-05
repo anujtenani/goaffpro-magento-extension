@@ -2,9 +2,36 @@
 
 namespace Goaffpro\AffiliateMarketing\Helper;
 
+use Goaffpro\AffiliateMarketing\Model\OrderPayloadBuilder;
+use Magento\Framework\App\Helper\Context;
+use Magento\Framework\HTTP\Client\Curl;
+use Magento\Sales\Model\Order;
+use Magento\Store\Model\StoreManagerInterface;
+
 class GoaffproApi extends Data
 {
     const GOAFFPRO_BASE_URL = 'https://api.goaffpro.com/magento/webhook/';
+
+    /**
+     * @var OrderPayloadBuilder
+     */
+    private $orderPayloadBuilder;
+
+    /**
+     * @param Context $context
+     * @param StoreManagerInterface $storeManager
+     * @param Curl $curl
+     * @param OrderPayloadBuilder $orderPayloadBuilder
+     */
+    public function __construct(
+        Context $context,
+        StoreManagerInterface $storeManager,
+        Curl $curl,
+        OrderPayloadBuilder $orderPayloadBuilder
+    ) {
+        $this->orderPayloadBuilder = $orderPayloadBuilder;
+        parent::__construct($context, $storeManager, $curl);
+    }
 
     /**
      * API request to Goaffpro API to confirm module installation
@@ -40,31 +67,36 @@ class GoaffproApi extends Data
 
     /**
      * API request to Goaffpro triggered on order update "sales_order_save_after"
-     * @param $orderId
+     * @param Order $order
      * @return bool
      */
-    public function orderUpdated($orderId)
+    public function orderUpdated(Order $order)
     {
-        $url = self::GOAFFPRO_BASE_URL . 'order.updated/' . $this->getPublicKey();
-        $data = ['id' => $orderId];
-        $this->curl->addHeader('Content-Type', 'application/json');
-        $this->curl->post($url, json_encode($data));
-        $result = $this->curl->getBody();
-        return $result == 'OK';
+        return $this->sendOrderWebhook('order.updated', $order);
     }
 
     /**
      * API request to Goaffpro triggered on place order "sales_order_place_after"
-     * @param $orderId
+     * @param Order $order
      * @return bool
      */
-    public function orderCreated($orderId)
+    public function orderCreated(Order $order)
     {
-        $url = self::GOAFFPRO_BASE_URL . 'order.created/' . $this->getPublicKey();
-        $data = ['id' => $orderId];
+        return $this->sendOrderWebhook('order.created', $order);
+    }
+
+    /**
+     * Post the full order payload to Goaffpro for the given event.
+     *
+     * @param string $event
+     * @param Order $order
+     * @return bool
+     */
+    private function sendOrderWebhook($event, Order $order)
+    {
+        $url = self::GOAFFPRO_BASE_URL . $event . '/' . $this->getPublicKey();
         $this->curl->addHeader('Content-Type', 'application/json');
-        $this->curl->post($url, json_encode($data));
-        $result = $this->curl->getBody();
-        return $result == 'OK';
+        $this->curl->post($url, json_encode($this->orderPayloadBuilder->build($order)));
+        return $this->curl->getBody() == 'OK';
     }
 }
