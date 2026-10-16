@@ -40,6 +40,7 @@ class Index implements ActionInterface
                 'goaffpro_public_token' => $this->helper->getPublicKey(),
                 'store_name' => $this->helper->getStoreName(),
                 'store_currency' => $this->helper->getStoreCurrency(),
+                'plugin_version' => $this->helper->getPluginVersion(),
             ]
         );
     }

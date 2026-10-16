@@ -214,8 +214,8 @@ Field notes:
 | `raw` | The unmodified Magento order record (every attribute Magento holds on the order) |
 
 Your store also exposes a small **public** JSON endpoint at `/goaffpro/config/index` that returns
-the Public Key, store name and store currency. The Goaffpro tracking script uses this to identify
-your store.
+the Public Key, store name, store currency and the plugin version. The Goaffpro tracking script
+uses this to identify your store.
 
 ### Privacy
 

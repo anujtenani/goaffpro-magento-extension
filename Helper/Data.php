@@ -14,6 +14,11 @@ class Data extends AbstractHelper
     const XML_PATH_PUBLIC_KEY = 'goaffpro/general/public_key';
 
     /**
+     * Keep in sync with the release tag (see RELEASE_GUIDE.md).
+     */
+    const PLUGIN_VERSION = '2.0.0';
+
+    /**
      * @var StoreManagerInterface
      */
     protected $storeManager;
@@ -35,6 +40,16 @@ class Data extends AbstractHelper
         $this->storeManager = $storeManager;
         parent::__construct($context);
         $this->curl = $curl;
+    }
+
+    /**
+     * Version of this plugin.
+     *
+     * @return string
+     */
+    public function getPluginVersion()
+    {
+        return self::PLUGIN_VERSION;
     }
 
     public function isEnabled($storeId = null)
